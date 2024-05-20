@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AttenDANCE App : {% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="static/style.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Attendance App</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        {% if session["user_id"] %}
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link {% if active_link == 'home' %}active{% endif %}" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if active_link == 'register_students' %}active{% endif %}"
+              href="/register_students">Register
+              Students</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if active_link == 'attendace' %}active{% endif %}" href="/attendance">Attendance</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if active_link == 'packages' %}active{% endif %}" href="/packages">Packages</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+        </ul>
+        {% else %}
+        <ul class="navbar-register-login navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link {% if active_link == 'login' %}active{% endif %}" href="/login">Login</a>
+          </li>
+          <li class="nav-item d-flex justify-content-end">
+            <a class="nav-link {% if active_link == 'register' %}active{% endif %}" href="/register">Register</a>
+          </li>
+        </ul>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+  <main class="container text-center">
+    {% block main %}{% endblock %}
+  </main>
+
+  <script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+  <script src="static/index.js"></script>
+</body>
+
+</html>

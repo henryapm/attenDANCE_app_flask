@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+List of Students
+{% endblock %}
+
+{% block main %}
+<p>Welcome {{ user }} to Attendance APP</p>
+<input type="search" name="search-input-2" id="search-input-2" placeholder="Search Student">
+<br>
+<form id="form-class-attendance" action="/" method="post">
+  <input type="date" name="date" id="date" data-bs-toggle="tooltip" data-bs-placement="top"
+    title="Select the day you want to check in your students">
+  <!-- need popper to make the tool tip appears -->
+  <div id="student-list-packages">
+    {% for student in packages %}
+    <button type="button" class="btn position-relative" data-id='{{ student[0] }}'
+      data-name="{{ student[1] }} {{ student[2] }}" data-toggle="tooltip" data-placement="top"
+      title="{{ student[3] }}">{{
+      student[1] }} {{ student[2] }}
+      <span id="quantity" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        {{ student[4] }}
+      </span>
+    </button>
+    {% endfor %}
+  </div><br>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+{% endblock %}

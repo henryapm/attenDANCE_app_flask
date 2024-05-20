@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Attendance List
+{% endblock %}
+
+{% block main %}
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Date of Attendance</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for attendee in attendees %}
+    <tr>
+      <td>{{ attendee[0] }}</td>
+      <td>{{ attendee[1] }}</td>
+      <td>{{ attendee[2] }}</td>
+      <td>{{ attendee[3] }}</td>
+      <td>{{ attendee[4] }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

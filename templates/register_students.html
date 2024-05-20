@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+List of Students
+{% endblock %}
+
+{% block main %}
+<form action="register_students" method="post" id="student-form" autocomplete="off">
+  <input type="text" id="fisrt" name="first" placeholder="First Name" autocomplete="nope"><br>
+  <input type="text" id="last" name="last" placeholder="Last Name" autocomplete="nope"><br>
+  <input type="email" id="email" name="email" placeholder="name@mail.com" autocomplete="nope"><br>
+  <input type="submit" value="Add Student">
+</form>
+{% endblock %}
